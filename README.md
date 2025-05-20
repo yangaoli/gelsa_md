@@ -65,6 +65,7 @@ The Daya Bay dataset consists of ASV (Amplicon Sequence Variants) abundance data
 The main result of this paper is a newly developed multi-core algorithm and software tool named GeLSA (see Alg. 1 and Fig. 1 ). GeLSA consists of two layers of acceleration over eLSA. In the core-level layer, we reduce the original 2-d time series alignment problem, which requires a quadratic O(n^2) time- and space-complexity dynamical programming algorithm (adapted from the Smith-Waterman local sequence alignment algorithm [10-13] and used in eLSA) to 2D+1 max sum subarray subproblems, which has an optimal 1-d dynamical programming algorithm solution in O(n) time- and space-complexity.
 
 <img src="./images/fig1/fig_1.jpg" alt="fig1.jpg" width="650" height="450" />
+Figure 1:Algorithm Demonstration of GeLSA
 
 The reduction is possible assuming the input time series are synced, and their effect on each other is short time framed (i.e. within a given time shift D units, D <<n). This assumption of short delay and sync is in accord with daily application scenarios [1-4]. That means when the 2-d dynamical programming algorithm aligns a pair of time series, only configurations with no gap and satisfying |Xs-Ys|<=D are possible solutions. As we observe, in this case, we can introduce 2D+1 series alignment subproblems, where the d-th subproblem is to find the optimal ungapped alignment between series pairs (X0…, Xi, …Xn-d) and (Y0+d…, Yi+d, …Yn) if d \in {0, …, D} or (X-d…, Xi-d, …Xn) and (Y0…, Yi, …Yn+d) if d \in {-1, …, -D}, and the best one of all 2D+1 subproblem solutions solves the original restricted 2-d alignment problem.
 
@@ -79,6 +80,8 @@ The overall GeLSA algorithm is both powerful and designed with user-friendliness
 Our first and foremost priority was to validate the correctness of GeLSA. In (Fig. 2 Fig. S1 and Fig.S2), we meticulously assessed GeLSA's accuracy by comparing its results with those obtained from eLSA using the simulation data, including LS (local similarity score), P_value (p-value), Xs (alignment start position of X), Ys (alignment start position of Y), Len (aligned length), and Delay (alignment shift). Each scatter subplot in (Fig. 2 Fig. S1 and Fig.S2) demonstrates a diagonal pattern, representing the identity between corresponding variables from GeLSA and eLSA, including LS, P_value, Xs, Ys, Len, and Delay. The fitted lines all had R<sup>2</sup> values of 1, except singleton cases due to rounding errors. The near-perfect concordance in all 18 comparisons provides strong evidence that GeLSA’s results are identical to eLSA's. This level of consistency demonstrates the correctness of GeLSA as an alternative method for performing LSA, ensuring both reliability and accuracy.
 
 <img src="./images/fig2/fig2.jpg" alt="fig2.jpg" width="450" height="650" />
+Figure 2:Comparison of Correctness in Running Results between GeLSA and eLSA
+With the settings configured as follows: m=100, n=50 and d=10, this figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA.
 
 In the core-level layer, we reduce the original 2-d time series alignment problem, which requires a quadratic O(n^2) time- and space-complexity dynamical programming algorithm (adapted from the Smith-Waterman local sequence alignment algorithm [10-13] and used in eLSA) to 2D+1 max sum subarray subproblems, which has an optimal 1-d dynamical programming algorithm solution in O(n) time- and space-complexity.
 
@@ -95,6 +98,12 @@ We then assessed GeLSA’s computational efficiency and found significant improv
 
 
 <img src="./images/fig3/fig3.jpg" alt="fig3.jpg" width="500" height="450" />
+Figure 3:Comparison of Performance on Computational Cores Between GeLSA and eLSA 
+A. Computational performance comparison between the novel LSA algorithm and traditional LSA on a single CPU core with fixed sequence length and increasing number of sequence pairs.
+B. Computational performance comparison between traditional LSA and the GeLSA computing core on CPU with fixed number of sequence pairs and increasing sequence length.
+C. Performance evaluation of GeLSA on GPU with fixed sequence length and increasing number of sequence pairs.
+D. Performance evaluation of GeLSA on GPU with fixed number of sequence pairs and increasing sequence length.
+
 
 When combining the core-level algorithm with outer-layer parallelization, on an Nvidia RTX 2050 GPU, we observed that the algorithm on the GPU also follows a quadratic pattern. In this context, the traditional eLSA algorithm fails to compute within the given timeframe, while GeLSA significantly improves overall efficiency. This was evident in the tests with m ranging from 5000 to 30000 and a fixed length of n=100. The average computation time did not exceed 10 seconds, while the eLSA algorithm for datasets with fewer time series could easily exceed 100 seconds (Fig. 2c).
 
@@ -113,6 +122,8 @@ We assessed the acceleration by GeLSA on eLSA and many other LSA and LTA algorit
 
 
 <img src="./images/fig4/fig4.jpg" alt="fig4.jpg" width="700" height="400" />
+Figure 4:Overall Software Performance Comparison between GeLSA and eLSA
+There are a total of 8 subgraphs in Figure 4, and the line graph data in each subplot are obtained by averaging the results of 5 experimental tests. 
 
 In the factor-varying benchmark, GeLSA_theo significantly accelerated eLSA_theo in all settings, particularly gaining momentum as the number of factors increased (Fig. 3a). At 100 factors, GeLSA_theo is 14.09 times faster, at 500 and 1,000 factors, it is 27.84 times faster, and at 2,000 factors it is 28.88 times faster than eLSA_theo. These substantial acceleration rates highlight the efficiency of GeLSA_theo compared to eLSA_theo. The same trend is observed for GeLSA_DDLSA: at n=100 factors, it is 12.12 times while at n=2,000 factors 23.77 times faster than eLSA_theo. There is no noticeable difference in efficiency between the GeLSA_theo and GeLSA_DDLSA, even though DDLSA uses a modified p-value theory compared to eLSA. This verifies GeLSA acceleration’s generalizability. Our experiments, which were limited to 10^5 seconds, showcased the remarkable efficiency of GeLSA_theo and GeLTA_theo. In contrast, eLSA_theo, despite its capabilities, could not complete parts of the datasets for n>2500. This underscores the superior performance of the GeLSA accelerated algorithms, which could finish within the time constraints.
 
@@ -135,6 +146,9 @@ We applied LSA using GeLSA to the 72-hour time series data from Daya Bay. We ide
 
 
 <img src="./images/fig5/fig5.jpg" alt="fig5.jpg" width="700" height="450" />
+Figure 5:Network Visualization of GeLSA Computation Results on the Daya Bay Dataset
+
+
 
 Furthermore, time-lagged correlations were also observed between dominant MGII (Marine Group II) archaea and diatoms such as Chaetoceros (Bacillariophyta) and Gyrodinium (Dinophyta). These findings provide insights into the interactions between traditional phytoplankton and prokaryotes, offering a higher phylogenetic and temporal resolution. 
 
@@ -200,37 +214,20 @@ This study was funded by the the Guangdong Basic and Applied Basic Research Foun
 
 [20] Chen S, Arifeen MZU, Li M,Xu S, Wang H, Chen S, Tao J, Guo K,Yan R, Zheng Y, et al. Diel Patternsin the Composition and Activity ofPlanktonic Microbes in a SubtropicalBay. Ocean-Land-Atmos. Res.2024;3:Article 0044.
 
-## Figure legends
-
-**Figure 1**  Algorithm Demonstration of GeLSA
-
-**Figure 2**  Comparison of Correctness in Running Results between GeLSA and eLSA
-With the settings configured as follows: m=100, n=50 and d=10, this figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA.
-
-**Figure 3**  Comparison of Performance on Computational Cores Between GeLSA and eLSA 
-
-A. Computational performance comparison between the novel LSA algorithm and traditional LSA on a single CPU core with fixed sequence length and increasing number of sequence pairs.
-B. Computational performance comparison between traditional LSA and the GeLSA computing core on CPU with fixed number of sequence pairs and increasing sequence length.
-C. Performance evaluation of GeLSA on GPU with fixed sequence length and increasing number of sequence pairs.
-D. Performance evaluation of GeLSA on GPU with fixed number of sequence pairs and increasing sequence length.
-
-
-**Figure 4**  Overall Software Performance Comparison between GeLSA and eLSA
-There are a total of 8 subgraphs in Figure 4, and the line graph data in each subplot are obtained by averaging the results of 5 experimental tests. 
-
-**Figure 5**  Network Visualization of GeLSA Computation Results on the Daya Bay Dataset
-
 
 ## Supplementary material
 
-**Figure S1**  Comparison of Correctness in Running Results between GeLSA and eLSA
+<img src="./images/figS1/figS1.jpg" alt="figS1.jpg" width="450" height="650" />
+Figure S1:Comparison of Correctness in Running Results between GeLSA and eLSA
 This figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA, with delay = 0.
 
-**Figure S2**  Comparison of Correctness in Running Results between GeLSA and eLSA
-This figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA, with delay = 5.
-
-<img src="./images/figS1/figS1.jpg" alt="figS1.jpg" width="450" height="650" />
 
 <img src="./images/figS2/figS2.jpg" alt="figS2.jpg" width="450" height="650" />
+Figure S2:Comparison of Correctness in Running Results between GeLSA and eLSA
+This figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA, with delay = 5.
+
+
+
+
 
 
