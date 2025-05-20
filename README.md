@@ -210,11 +210,8 @@ With the settings configured as follows: m=100, n=50 and d=10, this figure vivid
 **Figure 3**  Comparison of Performance on Computational Cores Between GeLSA and eLSA 
 
 A. Computational performance comparison between the novel LSA algorithm and traditional LSA on a single CPU core with fixed sequence length and increasing number of sequence pairs.
-
 B. Computational performance comparison between traditional LSA and the GeLSA computing core on CPU with fixed number of sequence pairs and increasing sequence length.
-
 C. Performance evaluation of GeLSA on GPU with fixed sequence length and increasing number of sequence pairs.
-
 D. Performance evaluation of GeLSA on GPU with fixed number of sequence pairs and increasing sequence length.
 
 
