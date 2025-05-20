@@ -232,3 +232,5 @@ This figure vividly illustrates that both the local similarity score LS (A) and 
 <img src="./images/figS1/figS1.jpg" alt="figS1.jpg" width="450" height="650" />
 
 <img src="./images/figS2/figS2.jpg" alt="figS2.jpg" width="450" height="650" />
+
+
