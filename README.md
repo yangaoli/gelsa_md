@@ -160,25 +160,44 @@ This study was funded by the the Guangdong Basic and Applied Basic Research Foun
 ## References
 
 [1] Caporaso JG, Lauber CL, Costello EK, et al. Moving pictures of the human microbiome. Genome Biol 2011;12:R50. 
+
 [2] Cram JA, Xia LC, Needham DM, et al. Cross-depth analysis of marine bacterial networks suggests downward propagation of temporal changes. ISME J 2015;9:2573–86. 
+
 [3] Steele JA, Countway PD, Xia L, et al. Marine bacterial, archaeal and protistan association networks reveal ecological linkages. ISME J 2011;5:1414–25. 
+
 [4] Shade A, McManus PS, Handelsman J. Unexpected diversity during community succession in the apple flower microbiome. MBio 2013;4:e00602–12. 
+
 [5] Cho RJ, Campbell MJ, Winzeler EA, et al. A genome-wide transcriptional analysis of the mitotic cell cycle. Mol Cell 1998;2: 65–73. 
+
 [6] Spellman PT, Sherlock G, Zhang MQ, et al. Comprehensive identification of cell cycle-regulated genes of the yeast Saccharomyces cerevisiae by microarray hybridization. Mol Biol Cell 
 1998;9:3273–97. 
+
 [7] Amar D, Yekutieli D, Maron-Katz A, et al. A hierarchical Bayesian model for flexible module discovery in three-way time-series data. Bioinformatics 2015;31:i17–26. 
+
 [8] Vaisvaser S, Lin T, Admon R, et al. Neural traces of stress: cortisol related sustained enhancement of amygdala-hippocampal functional connectivity. Front Hum Neurosci 2013;7:313. 
+
 [9] Durno WE, Hanson NW, Konwar KM, Hallam SJ. Expanding the boundaries of local similarity analysis. BMC Genomics 2013;14(Suppl 1):S3. 
+
 [10] Qian J, Dolled-Filhart M, Lin J, et al. Beyond synexpression relationships: local clustering of time-shifted and inverted gene expression profiles identifies new. Biologically relevant interactions. J Mol Biol 2001;314:1053–66.
+
 [11] Xia LC, Ai D, Cram J, et al. Efficient statistical significance approximation for local similarity analysis of high-throughput time series data. Bioinformatics 2013;29:230–7. 
+
 [12] Xia LC, Steele JA, Cram JA, et al. Extended local similarity analysis (eLSA) of microbial community and other time series data with replicates. BMC Syst Biol 2011;5:S15. 
+
 [13] Ruan Q, Dutta D, Schwalbach MS, et al. Local similarity analysis reveals unique associations among marine bacterioplankton species and environmental factors. Bioinformatics 2006;22: 2532–8.
+
 [14] He F, Zeng AP. In search of functional association from timeseries microarray data based on the change trend and level of gene expression. BMC Bioinformatics 2006;7:69. 
+
 [15] Ji L, Tan KL. Identifying time-lagged gene clusters using gene expression data. Bioinformatics 2005;21:509–16. 
+
 [16] Xia LC, Ai D,Cram JA, et al. Statistical significance approximation in local trend analysis of high-throughput time-series data using the theory of Markov chains. BMC Bioinformatics 2015;16:301. 
+
 [17] Zhang F, Shan A, Luan Y. A novel method to accurately calculate statistical significance of local similarity analysis for high-throughput time series. Stat Appl Genet Mol Biol 2018; 17:20180019. 
+
 [18] Zhang F, Sun F, Luan Y. Statistical significance approximation for local similarity analysis of dependent time series data. BMC Bioinformatics 2019;20:53. 
+
 [19] Shan A, Zhang F, Luan Y. Efficient approximation of statistical significance in local trend analysis of dependent time series. Front Genet 2022;13:729011
+
 [20] Chen S, Arifeen MZU, Li M,Xu S, Wang H, Chen S, Tao J, Guo K,Yan R, Zheng Y, et al. Diel Patternsin the Composition and Activity ofPlanktonic Microbes in a SubtropicalBay. Ocean-Land-Atmos. Res.2024;3:Article 0044.
 
 ## Figure legends
@@ -191,13 +210,16 @@ With the settings configured as follows: m=100, n=50 and d=10, this figure vivid
 **Figure 3**  Comparison of Performance on Computational Cores Between GeLSA and eLSA 
 
 A. Computational performance comparison between the novel LSA algorithm and traditional LSA on a single CPU core with fixed sequence length and increasing number of sequence pairs.
+
 B. Computational performance comparison between traditional LSA and the GeLSA computing core on CPU with fixed number of sequence pairs and increasing sequence length.
+
 C. Performance evaluation of GeLSA on GPU with fixed sequence length and increasing number of sequence pairs.
+
 D. Performance evaluation of GeLSA on GPU with fixed number of sequence pairs and increasing sequence length.
 
 
 **Figure 4**  Overall Software Performance Comparison between GeLSA and eLSA
-There are a total of 8 subgraphs in Figure 3, and the line graph data in each subplot are obtained by averaging the results of 5 experimental tests. 
+There are a total of 8 subgraphs in Figure 4, and the line graph data in each subplot are obtained by averaging the results of 5 experimental tests. 
 
 **Figure 5**  Network Visualization of GeLSA Computation Results on the Daya Bay Dataset
 
