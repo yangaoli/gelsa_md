@@ -116,7 +116,7 @@ In summary, from both theoretical analysis and experimental evidence, we can con
 We assessed the acceleration by GeLSA on eLSA and many other LSA and LTA algorithms with both theory and permutation p-value approaches (see Methods) and demonstrated the scalability and generalizability of GeLSA acceleration. The findings for theory p-value LSA and LTA algorithms on a factor-varying (n=100, m={100, 300, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000}) and a length-varying (m=1000, n={20, 40, 60, 80, 100}) dataset are shown in Figs. 3a to 3b, and Figs. 3c to 3d, respectively. Note that theoretical p-value based approaches are fast tail probability approximations based on the asymptotic theory of random walk excursion range. It allows precomputation and constant time evaluation of p-value at program runtime but requires the input series to be at least 20 units long (n>=20) for validity. It enables LSA to analyse thousands of factors on a PC, significantly more than permutation.
 
 
-<img src="./images/fig4/fig4.jpg" alt="fig4.jpg" width="750" height="400" />
+<img src="./images/fig4/fig4.jpg" alt="fig4.jpg" width="800" height="400" />
 Figure 4:Overall Software Performance Comparison between GeLSA and eLSA
 There are a total of 8 subgraphs in Figure 4, and the line graph data in each subplot are obtained by averaging the results of 5 experimental tests. 
 
