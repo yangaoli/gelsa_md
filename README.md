@@ -225,9 +225,3 @@ This figure vividly illustrates that both the local similarity score LS (A) and 
 <img src="./images/figS2/figS2.jpg" alt="figS2.jpg" width="450" height="650" />
 Figure S2:Comparison of Correctness in Running Results between GeLSA and eLSA
 This figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA, with delay = 5.
-
-
-
-
-
-
