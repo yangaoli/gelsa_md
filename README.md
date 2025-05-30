@@ -95,7 +95,7 @@ We subsequently designed experiments to empirically validate these theoretical p
 
 We then assessed GeLSA’s computational efficiency and found significant improvement. We compared the running time efficiency of GeLSA’s core-level algorithm to that of eLSA on a single CPU core (Fig. 3a). With a fixed series length (n=100), GeLSA’s core algorithm consistently reduced the running time compared to eLSA across dataset sizes ranging from m=200 to m=5000, achieving an average acceleration rate of 1.94, with a variance of only 0.009086.With a fixed number of factors (m=2000) and varying series lengths (n=100 to n=1000), we can clearly observe in (Fig. 3b) that the eLSA computation time curve follows a quadratic pattern, whereas the GeLSA curve remains linear. This indicates that as the time series length increases, the advantage of the improved algorithm becomes more pronounced.
 
-<img src="./images/fig3/fig3.jpg" alt="fig3.jpg" width="500" height="550" />
+<img src="./images/fig3/fig3.jpg" alt="fig3.jpg" width="550" height="550" />
 Figure 3:Comparison of Performance on Computational Cores Between GeLSA and eLSA 
 A. Computational performance comparison between the novel LSA algorithm and traditional LSA on a single CPU core with fixed sequence length and increasing number of sequence pairs.
 B. Computational performance comparison between traditional LSA and the GeLSA computing core on CPU with fixed number of sequence pairs and increasing sequence length.
