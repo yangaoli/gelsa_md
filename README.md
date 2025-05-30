@@ -229,7 +229,7 @@ Figure S2:Comparison of Correctness in Running Results between GeLSA and eLSA
 This figure vividly illustrates that both the local similarity score LS (A) and other statistical measures (p_value, xs, ys, len, delay) (B, C, D, E, F) show remarkably consistent computational results between GeLSA and eLSA, with delay = 5.
 
 ### Proof of GeLSA Theory
-- [Proof of GeLSA Theory](./proof/paper/GeLSA.pdf)
+- [Proof of GeLSA Theory](./proof/paper/The_Proof_of_GeLSA_Theory.pdf)
 - Review:
   ![教程截图](./proof/images/Theory-images-0.jpg)
   ![教程截图](./proof/images/Theory-images-1.jpg)
