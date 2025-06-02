@@ -76,7 +76,7 @@ The acceleration effects of this parallelization approach can be implemented dif
 
 The overall GeLSA algorithm is both powerful and designed with user-friendliness in mind. It is implemented in C++ with CUDA and packaged as a Python 3 module for easy deployment. To further simplify the process, we provide a user-friendly docker image at http://github.com/labxscut/gelsa. This image comes with comprehensive user manuals and case examples, ensuring a smooth and hassle-free experience for our users and making the installation and use of GeLSA a breeze.
  
-## GeLSA’s Correctness and Efficiency
+### GeLSA’s Correctness and Efficiency
 
 Our first and foremost priority was to validate the correctness of GeLSA. In (Fig. 2 Fig. S1 and Fig.S2), we meticulously assessed GeLSA's accuracy by comparing its results with those obtained from eLSA using the simulation data, including LS (local similarity score), P_value (p-value), Xs (alignment start position of X), Ys (alignment start position of Y), Len (aligned length), and Delay (alignment shift). Each scatter subplot in (Fig. 2 Fig. S1 and Fig.S2) demonstrates a diagonal pattern, representing the identity between corresponding variables from GeLSA and eLSA, including LS, P_value, Xs, Ys, Len, and Delay. The fitted lines all had $R^2$ values of 1, except singleton cases due to rounding errors. The near-perfect concordance in all 18 comparisons provides strong evidence that GeLSA’s results are identical to eLSA's. This level of consistency demonstrates the correctness of GeLSA as an alternative method for performing LSA, ensuring both reliability and accuracy.
 
