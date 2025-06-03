@@ -143,7 +143,7 @@ These experiments together demonstrated GeLSA’s strong generalizability and sc
 We applied LSA using GeLSA to the 72-hour time series data from Daya Bay. We identified many potential microbial interactions between viruses, phytoplankton and prokaryotes (see Fig. 5). These interactions include symbiosis, cross-nutrition, competition, parasitism, predation, and allelopathy. It was found that several significant time-lagged correlations (Spearman's |R| > 0.70, P < 0.01) exist between major phytoplankton taxa and specific prokaryotes in the Daya Bay time series. Significant correlations were observed between certain diatoms and members of the Alphaproteobacteria, Gammaproteobacteria and Bacteroidota.
 
 
-<img src="./images/fig6/fig6.jpg" alt="fig6.jpg" width="700" height="450" />
+<img src="./images/fig6/fig6.jpg" alt="fig6.jpg" width="700" height="1200" />
 Figure 6:Network Visualization of GeLSA Computation Results on the Daya Bay Dataset
 
 Furthermore, time-lagged correlations were also observed between dominant MGII (Marine Group II) archaea and diatoms such as Chaetoceros (Bacillariophyta) and Gyrodinium (Dinophyta). These findings provide insights into the interactions between traditional phytoplankton and prokaryotes, offering a higher phylogenetic and temporal resolution. 
