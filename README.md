@@ -65,51 +65,7 @@ Figure 1:Algorithm Demonstration of GeLSA
 
 The reduction assumes the input time series are synced, and their effect on each other is localized (i.e. within a given time shift D units, D <<n). This assumption of short delay and sync is in accord with daily application scenarios [1-4]. The algorithm reformulates the restricted 2D alignment problem into 2D+1 subproblems, where each subproblem identifies the optimal ungapped alignment between truncated series pairs. Specifically, the d-th subproblem is to find the optimal ungapped alignment between series pairs $(X_0…, X_i, …X_{n-d})$ and $(Y_{0+d}…, Y_{i+d}, …Y_n)$ if d ∈ {0, …, D} or $(X_{-d}…, X_{i-d}, …X_n)$ and $(Y_0…, Y_i, …Y_{n+d})$ if d ∈ {-1, …, -D}, and the best one of all 2D+1 subproblem solutions solves the original restricted 2-d alignment problem.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Let’s denoted the truncated series pairs in the d-th subproblem as $U_i(d)$ and $V_i(d)$ of the same length n-d with length ranging from n-D+1 to n, and denote $Z_i(d)$ = $U_i(d)$ * $V_i(d)$, the product series of corresponding $U_i$ and $V_i$ terms. Now, the original restricted optimal ungapped alignment problem of $U_i$ and $V_i$ is equivalent to finding the contiguous subarray [s, e] of $Z_i$, which gives the maximum sum subarray $\sum_s^e[Z_i]$. This transformation can be done in O(n) time- and O(1) space-complexity using a 1-d dynamical programming algorithm as implemented in  GeLSA (Alg. 1). Since we only need to compute and store $Z_i(d)$ temporarily during the computation, the resulting GeLSA algorithm is O(n) in time and space complexity. The mathematical proof of reduction to max sum subarray subproblems is provided in the appendix of this paper.
-
-Let’s denoted the truncated series pairs in the d-th subproblem as $U_i(d)$ and $V_i(d)$.of the same length n-d with length ranging from n-D+1 to n, and denote $Z_i(d)$ = $U_i(d)$ * $V_i(d)$, the product series of corresponding $U_i$ and $V_i$ terms. Now, the original restricted optimal ungapped alignment problem of $U_i$ and $V_i$ is equivalent to finding the contiguous subarray [s, e] of $Z_i$, which gives the maximum sum subarray $\sum_s^e[Z_i]$. This transformation can be done in O(n) time- and O(1) space-complexity using a 1-d dynamical programming algorithm as implemented in  GeLSA (Alg. 1). Since we only need to compute and store $Z_i$ temporarily during the computation, the resulting GeLSA algorithm is O(n) in time and space complexity. The mathematical proof of reduction to max sum subarray subproblems is provided in the appendix of this paper.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Let’s denoted the truncated series pairs in the d-th subproblem as $U_i(d)$ and $V_i(d)$ of the same length n-d with length ranging from n-D+1 to n, and denote $Z_i(d)$ = $U_i(d)$ * $V_i(d)$, the product series of corresponding $U_i$ and $V_i$ terms. Now, the original restricted optimal ungapped alignment problem of $U_i$ and $V_i$ is equivalent to finding the contiguous subarray [s, e] of $Z_i$, which gives the maximum sum subarray $\sum_s^e[Z_i]$. This transformation can be done in O(n) time- and O(1) space-complexity using a 1-d dynamical programming algorithm as implemented in  GeLSA (Alg. 1). Since we only need to compute and store $Z_i$ temporarily during the computation, the resulting GeLSA algorithm is O(n) in time and space complexity. The mathematical proof of reduction to max sum subarray subproblems is provided in the appendix of this paper.
 
 The GeLSA computing core employs a dual-layer parallel processing architecture to further enhance computational efficiency. The outer-layer parallelism handles parallel sequence matching across biological data and aggregates the computational results globally, while the inner-layer parallelism performs alignment calculations on successfully matched sequences and determines optimal solutions for each sequence pair by conducting comparative analysis on all (2D+1) computational results. The acceleration effects of this parallelization approach can be implemented differently on CPU and GPU hardware platforms. On the CPU platform, the outer-layer parallel processing achieves sequence matching through multi-threading, while the inner-layer computations are accelerated through SIMD-optimized compiler directives with vectorization enabled, thereby significantly improving the efficiency of pairwise sequence alignment. On the GPU platform, the outer-layer parallelism is managed by streaming multiprocessors (SMs) for concurrent sequence matching, while the inner-layer computations are executed in parallel by CUDA cores via thread-level parallelism. This design ensures efficient processing of biological sequence data across both CPU and GPU architectures.The overall GeLSA algorithm is implemented in C++ with CUDA and packaged as a Python 3 module for easy deployment and ease of use. Additionally, a user-friendly Docker image is provided at http://github.com/labxscut/gelsa, along with comprehensive user manuals and case examples. This ensures seamless deployment and accessibility for researchers,  enabling efficient analysis of large-scale time series datasets. 
  
